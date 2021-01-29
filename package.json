@@ -1,0 +1,12 @@
+{
+    "name": "daily",
+    "private": true,
+    "workspaces": [
+        "client",
+        "functions"
+    ],
+    "scripts": {
+        "client": "yarn workspace @daily/client run start",
+        "functions": "yarn workspace @daily/functions run serve"
+    }
+}
