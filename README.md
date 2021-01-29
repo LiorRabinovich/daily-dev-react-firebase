@@ -3,7 +3,7 @@
 Just an example of a project like daily.dev with React and firebase
 
 ## Screenshot
-![screenshots](https://raw.githubusercontent.com/LiorRabinovich/daily-dev-react-firebase/master/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/LiorRabinovich/daily-dev-react-firebase/master/daily-screenshot.PNG)
 
 ## Available Scripts
 
