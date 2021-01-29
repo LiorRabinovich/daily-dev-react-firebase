@@ -21,34 +21,19 @@ function getImage(item) {
 }
 
 // This will be run every day at 11:05 AM Jerusalem!
-// module.exports.getFeed = functions.pubsub.schedule('5 11 * * *')
-//     .timeZone('Israel/Jerusalem')
-//     .onRun(async (context) => {
-//         const feedUrl = 'https://medium.com/feed/topic/javascript'
-//         const feed = await parser.parseURL(feedUrl);
-//         functions.logger.info({ feed }, { structuredData: true });
-//         feed.items.forEach((item) => {
-//             firestore.collection('posts').add({
-//                 title: item.title,
-//                 link: item.link,
-//                 createdAt: Timestamp.now().toMillis(),
-//                 creator: item.creator,
-//                 image: getImage(item)
-//             })
-//         })
-//     });
-
-exports.test = functions.https.onRequest(async (req, res) => {
-    const feedUrl = 'https://medium.com/feed/topic/javascript'
-    const feed = await parser.parseURL(feedUrl);
-    functions.logger.info({ feed }, { structuredData: true });
-    feed.items.forEach((item) => {
-        firestore.collection('posts').add({
-            title: item.title,
-            link: item.link,
-            createdAt: Timestamp.now().toMillis(),
-            creator: item.creator,
-            image: getImage(item)
+module.exports.getFeed = functions.pubsub.schedule('5 11 * * *')
+    .timeZone('Israel/Jerusalem')
+    .onRun(async (context) => {
+        const feedUrl = 'https://medium.com/feed/topic/javascript'
+        const feed = await parser.parseURL(feedUrl);
+        functions.logger.info({ feed }, { structuredData: true });
+        feed.items.forEach((item) => {
+            firestore.collection('posts').add({
+                title: item.title,
+                link: item.link,
+                createdAt: Timestamp.now().toMillis(),
+                creator: item.creator,
+                image: getImage(item)
+            })
         })
-    })
-});
+    });
